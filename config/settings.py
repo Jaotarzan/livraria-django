@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'livraria',
     'usuario',
     'uploader',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +142,13 @@ REST_FRAMEWORK = {
      "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Livraria API",
+    "DESCRIPTION": "API para gerenciamento de livraria, incluindo endpoints e documentação.",
+    "VERSION": "1.0.0",
 }
 
 # App uploader settings
