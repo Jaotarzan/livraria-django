@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Autor, Compra, Categoria, Editora, Livro
+from .models import Autor, Compra, Categoria, ItensCompra, Editora, Livro
 
 
 
@@ -18,8 +18,6 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_filter = ('descricao',)
     ordering = ('descricao',)
 
-admin.site.register(Compra)
-
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
     list_display = ('Nome',)
@@ -34,3 +32,7 @@ class LivroAdmin(admin.ModelAdmin):
     list_filter = ('editora', 'categoria')
     ordering = ('titulo', 'editora', 'categoria')
     list_per_page = 25
+
+admin.site.register(Compra)
+
+admin.site.register(ItensCompra)
