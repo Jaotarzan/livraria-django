@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer, CharField, SerializerMethodField
 
 from livraria.models import Compra, ItensCompra
+from rest_framework import serializers
 
 
 class ItensCompraSerializer(ModelSerializer):
@@ -14,12 +15,13 @@ class ItensCompraSerializer(ModelSerializer):
         return instance.quantidade * instance.livro.preco
 
 class CompraSerializer(ModelSerializer):
+    usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
     itens = ItensCompraSerializer(many=True, read_only=True)
     status = CharField(source="get_status_display", read_only=True)
-    usuario = CharField(source="usuario.email", read_only=True)
+
     class Meta:
         model = Compra
-        fields = ["id", "usuario", "status", "total", "itens"]
+        fields = ("id", "usuario", "status", "total", "itens")
 
 class CriarEditarItensCompraSerializer(ModelSerializer):
     class Meta:
