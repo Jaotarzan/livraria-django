@@ -33,6 +33,9 @@ class LivroAdmin(admin.ModelAdmin):
     ordering = ('titulo', 'editora', 'categoria')
     list_per_page = 25
 
-admin.site.register(Compra)
+class ItensCompraInline(admin.TabularInline):
+    model = ItensCompra
 
-admin.site.register(ItensCompra)
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    inlines = [ItensCompraInline]
