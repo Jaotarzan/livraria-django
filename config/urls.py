@@ -21,13 +21,14 @@ from drf_spectacular.views import (
 
 from usuario.router import router as usuario_router
 
-from livraria.views import AutorViewSet, CategoriaViewSet, EditoraViewSet, LivroViewSet
+from livraria.views import AutorViewSet, CategoriaViewSet, EditoraViewSet, LivroViewSet, UsuarioViewSet
 
 router = DefaultRouter()
 router.register(r"categorias", CategoriaViewSet)
 router.register(r"editoras", EditoraViewSet)
 router.register(r"autores", AutorViewSet)
 router.register(r"livros", LivroViewSet)
+router.register(r"usuarios", UsuarioViewSet) 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
