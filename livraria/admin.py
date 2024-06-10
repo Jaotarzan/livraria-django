@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Autor, Categoria, Editora, Livro
+from .models import Autor, Compra, Categoria, Editora, Livro
 
 
 
@@ -17,6 +17,8 @@ class CategoriaAdmin(admin.ModelAdmin):
     search_fields = ('descricao',)
     list_filter = ('descricao',)
     ordering = ('descricao',)
+
+admin.site.register(Compra)
 
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
