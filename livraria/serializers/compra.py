@@ -6,8 +6,8 @@ from livraria.models import Compra, ItensCompra
 class ItensCompraSerializer(ModelSerializer):
     class Meta:
         model = ItensCompra
-        fields = "__all__"
-        depth = 1
+        fields = ["livro", "quantidade"]
+        depth = 2
 
 class CompraSerializer(ModelSerializer):
     itens = ItensCompraSerializer(many=True, read_only=True)
