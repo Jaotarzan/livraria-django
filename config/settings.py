@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'livraria',
     'usuario',
     'uploader',
+    "django_filters",
     'drf_spectacular',
 ]
 
