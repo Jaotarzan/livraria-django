@@ -21,6 +21,8 @@ class CompraViewSet(ModelViewSet):
             return Compra.objects.all()
         if usuario.groups.filter(name="administradores"):
             return Compra.objects.all()
+        if usuario.tipo == Usuario.tipo.GERENTE:
+            return Compra.objects.all()
         return Compra.objects.filter(usuario=usuario)
     
     serializer_class = CompraSerializer
