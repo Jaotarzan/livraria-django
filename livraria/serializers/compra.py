@@ -56,10 +56,10 @@ class CriarEditarCompraSerializer(ModelSerializer):
         if itens:
             instance.itens.all().delete()
             for item in itens:
+                item["preco_item"] = item["livro"].preco 
                 ItensCompra.objects.create(compra=instance, **item)
-            instance.save()
-            return instance
-    
+        instance.save()
+        return instance
 
 
     
